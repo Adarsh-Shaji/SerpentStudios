@@ -8,7 +8,7 @@ export const inngest = new Inngest({ id: "serpentStudios-next" });
 // inngest to function to save user data to a database
 export const syncUserCreation = inngest.createFunction(
     {
-        id:'sync_user_from_clerk'
+        id:'sync-user-from-clerk'
     },
     {
         event:'clerk/user.created'
