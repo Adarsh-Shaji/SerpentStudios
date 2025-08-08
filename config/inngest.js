@@ -5,7 +5,7 @@ import User from "@/models/User";
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "serpentStudios-next" });
 
-// ingest to function to save user data to a database
+// inngest to function to save user data to a database
 export const syncUserCreation = inngest.createFunction(
     {
         id:'sync_user_from_clerk'
@@ -26,13 +26,13 @@ export const syncUserCreation = inngest.createFunction(
     }
 )
 
-//Igest Function to update user data in database
+//Inngest Function to update user data in database
 export const syncUserUpdation = inngest.createFunction(
     {
         id: 'update-user-from-clerk'
     },
     {
-        event:'clerk/User.updated'
+        event:'clerk/user.updated'
     },
     async({event})=>{
         const{id, first_name, last_name, email_addresses,image_url} = event.data
@@ -48,7 +48,7 @@ export const syncUserUpdation = inngest.createFunction(
 )
 
 
-//ingest function to delete user from database
+//inngest function to delete user from database
 export const syncUserDeletion = inngest.createFunction(
     {
         id: 'delete-user-with-clerk'
