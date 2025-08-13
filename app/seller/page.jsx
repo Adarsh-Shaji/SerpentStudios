@@ -13,7 +13,7 @@ const AddProduct = () => {
   const [files, setFiles] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('Earphone');
+  const [category, setCategory] = useState('Performance T-shirt');
   const [price, setPrice] = useState('');
   const [offerPrice, setOfferPrice] = useState('');
 
@@ -43,7 +43,7 @@ const AddProduct = () => {
         setFiles([]);
         setName('');
         setDescription('');
-        setCategory('Earphone');
+        setCategory('Performance T-shirt');
         setPrice('');
         setOfferPrice('');
       }else{
@@ -125,14 +125,11 @@ const AddProduct = () => {
               className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"
               onChange={(e) => setCategory(e.target.value)}
               defaultValue={category}
-            >
-              <option value="Earphone">Earphone</option>
-              <option value="Headphone">Headphone</option>
-              <option value="Watch">Watch</option>
-              <option value="Smartphone">Smartphone</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Camera">Camera</option>
-              <option value="Accessories">Accessories</option>
+            > <option value="Performance T-shirt">Performance T-shirt</option>
+              <option value="OverSized T-shirt">OverSized T-shirt</option>
+              <option value="Tank Tops">Tank Tops</option>
+              <option value="Hoodies">Hoodies</option>
+              <option value="Compression Top">Compression Top</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">

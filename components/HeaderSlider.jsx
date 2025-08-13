@@ -1,34 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import { useRouter } from "next/navigation"; // import useRouter
 
 const HeaderSlider = () => {
+  const router = useRouter(); // initialize router
+
   const sliderData = [
-  {
-    id: 1,
-    title: "Unleash Your Strength - Premium Gym Wear for Champions!",
-    offer: "Limited Time Offer: 30% Off on All Fitness Apparel",
-    buttonText1: "Shop Now",
-    buttonText2: "Browse Collection",
-    imgSrc: assets.OversizedHeaderSlider,
-  },
-  {
-    id: 2,
-    title: "Gear Up for Victory - Performance Sportswear Built to Move!",
-    offer: "Hurry! Only a Few Left in Stock",
-    buttonText1: "Get Yours",
-    buttonText2: "Explore More",
-    imgSrc: assets.tracksuitHeaderSlider,
-  },
-  {
-    id: 3,
-    title: "Train Hard, Look Sharp - Athletic Wear Designed for Winners!",
-    offer: "Exclusive Deal: 40% Off on Select Items",
-    buttonText1: "Order Today",
-    buttonText2: "Learn More",
-    imgSrc: assets.tankTopHeaderSlider,
-  },
-];
+    {
+      id: 1,
+      title: "Unleash Your Strength - Premium Gym Wear for Champions!",
+      offer: "Limited Time Offer: 30% Off on All Fitness Apparel",
+      buttonText1: "Shop Now",
+      buttonText2: "Browse Collection",
+      imgSrc: assets.OversizedHeaderSlider,
+      category: "Performance T-shirt",
+    },
+    {
+      id: 2,
+      title: "Gear Up for Victory - Performance Sportswear Built to Move!",
+      offer: "Hurry! Only a Few Left in Stock",
+      buttonText1: "Get Yours",
+      buttonText2: "Explore More",
+      imgSrc: assets.tracksuitHeaderSlider,
+      category: "Compression Top", // updated category
+    },
+    {
+      id: 3,
+      title: "Train Hard, Look Sharp - Athletic Wear Designed for Winners!",
+      offer: "Exclusive Deal: 40% Off on Select Items",
+      buttonText1: "Order Today",
+      buttonText2: "Learn More",
+      imgSrc: assets.tankTopHeaderSlider,
+      category: "Tank Tops",
+    },
+  ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -41,6 +47,12 @@ const HeaderSlider = () => {
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
+  };
+
+  const handleCategoryClick = (category) => {
+    if (category) {
+      router.push(`/category/${encodeURIComponent(category)}`);
+    }
   };
 
   return (
@@ -62,12 +74,22 @@ const HeaderSlider = () => {
                 {slide.title}
               </h1>
               <div className="flex items-center mt-4 md:mt-6 ">
-                <button className="md:px-10 px-7 md:py-2.5 py-2 bg-orange-600 rounded-full text-white font-medium">
+                <button
+                  onClick={() => handleCategoryClick(slide.category)}
+                  className="md:px-10 px-7 md:py-2.5 py-2 bg-orange-600 rounded-full text-white font-medium"
+                >
                   {slide.buttonText1}
                 </button>
-                <button className="group flex items-center gap-2 px-6 py-2.5 font-medium">
+                <button
+                  onClick={() => handleCategoryClick(slide.category)}
+                  className="group flex items-center gap-2 px-6 py-2.5 font-medium"
+                >
                   {slide.buttonText2}
-                  <Image className="group-hover:translate-x-1 transition" src={assets.arrow_icon} alt="arrow_icon" />
+                  <Image
+                    className="group-hover:translate-x-1 transition"
+                    src={assets.arrow_icon}
+                    alt="arrow_icon"
+                  />
                 </button>
               </div>
             </div>
